@@ -1,14 +1,19 @@
-  model: azure:gpt-5.2
-  ignore:
-    - "**/*.lock"
-    - "vendor/**"
-  max_files: 50
-  max_comments: 50
-  min_severity: low
-  include_comments: self
-
-  reviewer:
-    architecture:
-    security:
-    style:
-    
+# .prelude.yaml
+ 
+# Top-level fields are defaults inherited by all reviewers.
+model: azure:gpt-5.2          # optional; otherwise uses server default
+ignore:                            # gitignore-style globs excluded from the diff
+  - "**/*.lock"
+  - "vendor/**"
+max_files: 50                      # hard cap on files sent to the LLM
+max_comments: 50                   # hard cap on existing comments fetched for context
+min_severity: low                  # drop comments below this severity
+include_comments: self             # which existing PR comments to show reviewers (none|self|all)
+ 
+# Reviewers to run, keyed by name. Presence = enabled.
+# A bare key (null value) inherits all top-level defaults.
+# Per-reviewer fields fully override (not merge with) the top-level default.
+reviewers:
+  architecture:
+  security:
+  style:          
