@@ -1,0 +1,14 @@
+  model: azure:gpt-5.2
+  ignore:
+    - "**/*.lock"
+    - "vendor/**"
+  max_files: 50
+  max_comments: 50
+  min_severity: low
+  include_comments: self
+
+  reviewer:
+    architecture:
+    security:
+    style:
+    
